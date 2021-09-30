@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CubeWar.Interfaces
+namespace TopDownFramework.Interfaces
 {
     public interface IDamagable
     {

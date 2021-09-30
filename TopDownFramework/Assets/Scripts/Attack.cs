@@ -4,19 +4,19 @@ using UnityEngine;
 using TopDownFramework.Interface;
 using System;
 using TopDownFramework.Weapons;
-using CubeWar.Enums;
+using TopDownFramework.Enums;
 
 namespace TopDownFramework
 {
     public class Attack : Ability
     {
-        [SerializeField]
-        protected GameObject currentWeapon;
+        protected IWeapon currentWeapon;
 
         // Start is called before the first frame update
         protected override void Initialization()
         {
             base.Initialization();
+            currentWeapon = GetComponent<IWeapon>();
         }
 
         // Update is called once per frame
@@ -24,7 +24,7 @@ namespace TopDownFramework
         {
             if (ShootingPressed())
             {
-                currentWeapon.GetComponent<IWeapon>().Attack(tr.position, tr.rotation);
+                currentWeapon.Attack(tr.position, tr.rotation, Camera.main.ScreenToWorldPoint(Input.mousePosition));
             }
         }
 
@@ -35,7 +35,7 @@ namespace TopDownFramework
 
         private bool ShootingPressed()
         {
-            var attackMode = currentWeapon.GetComponent<IWeapon>().attackMode;
+            var attackMode = currentWeapon.attackMode;
 
             switch (attackMode)
             {

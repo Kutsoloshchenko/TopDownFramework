@@ -1,4 +1,4 @@
-﻿using CubeWar.Enums;
+﻿using TopDownFramework.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,6 @@ namespace TopDownFramework.Interface
     {
         AttackMode attackMode { get; }
 
-        void Attack(Vector3 possition, Quaternion angle);
+        void Attack(Vector3 attackerPossition, Quaternion attackerRotation, Vector3 targetPossition);
     }
 }

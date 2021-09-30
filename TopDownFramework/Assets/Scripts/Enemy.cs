@@ -1,7 +1,8 @@
-﻿using CubeWar.Interfaces;
+﻿using TopDownFramework.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TopDownFramework.Interface;
 
 namespace TopDownFramework
 {
@@ -11,6 +12,8 @@ namespace TopDownFramework
         [SerializeField]
         protected float HP;
 
+        protected FieldOfView fov;
+        protected IEnemyAi Ai;
 
         public void ApplyDamage(float dmgValue)
         {
@@ -29,13 +32,12 @@ namespace TopDownFramework
         // Start is called before the first frame update
         void Start()
         {
-
+            Ai = GetComponent<IEnemyAi>();
         }
 
-        // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-
+            Ai.ApplyEnemyBehaviour();
         }
     }
 }

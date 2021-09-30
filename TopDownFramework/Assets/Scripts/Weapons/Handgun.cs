@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TopDownFramework.Interface;
-using CubeWar.Enums;
+using TopDownFramework.Enums;
 using UnityEngine;
 
 namespace TopDownFramework.Weapons
@@ -31,11 +31,11 @@ namespace TopDownFramework.Weapons
 
         public AttackMode attackMode { get; private set; } = AttackMode.Automatic;
 
-        public void Attack(Vector3 possition, Quaternion angle)
+        public void Attack(Vector3 attackerPossition, Quaternion attackerRotation, Vector3 targetPossition)
         {
             if (CanShoot())
             {
-                StartCoroutine(Shoot(possition, angle));
+                StartCoroutine(Shoot(attackerPossition, attackerRotation, targetPossition));
             }
         }
 
@@ -44,13 +44,10 @@ namespace TopDownFramework.Weapons
             return (timeSinceLastShot <= 0);
         }
 
-        private IEnumerator<object> Shoot(Vector3 possition, Quaternion angle)
+        private IEnumerator<object> Shoot(Vector3 attackerPossition, Quaternion attackerRotation, Vector3 targetPossition)
         {
-            var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            var x = mousePos.x - possition.x;
-            var y = mousePos.y - possition.y;
-
+            var x = targetPossition.x - attackerPossition.x;
+            var y = targetPossition.y - attackerPossition.y;
             var xToYRealation = Mathf.Abs(x / y);
 
             var yVelocity = Mathf.Sqrt(Mathf.Pow(projectileSpeed, 2) / (Mathf.Pow(xToYRealation, 2) + 1));
@@ -73,7 +70,7 @@ namespace TopDownFramework.Weapons
                 yLocalOffset *= -1;
             }
 
-            var projectileObject = Instantiate(projectile, new Vector3(possition.x + xLocalOffset, possition.y + yLocalOffset, possition.z), angle);
+            var projectileObject = Instantiate(projectile, new Vector3(attackerPossition.x + xLocalOffset, attackerPossition.y + yLocalOffset, attackerPossition.z), attackerRotation);
 
             projectileObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity, yVelocity);
 

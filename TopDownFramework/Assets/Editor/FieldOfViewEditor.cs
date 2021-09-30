@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using CubeWar;
+using TopDownFramework;
 
 [CustomEditor(typeof(FieldOfView))]
 public class FieldOfViewEditor : Editor

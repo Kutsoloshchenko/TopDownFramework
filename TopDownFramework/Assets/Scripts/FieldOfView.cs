@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CubeWar
+namespace TopDownFramework
 {
     public class FieldOfView : MonoBehaviour
     {
@@ -82,8 +82,6 @@ namespace CubeWar
             }
 
             canSeeTarget = false;
-
-
         }
     }
 

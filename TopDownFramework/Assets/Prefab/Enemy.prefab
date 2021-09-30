@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 7571448958502623685}
   - component: {fileID: 7571448958502623686}
   - component: {fileID: 7571448958502623687}
+  - component: {fileID: 458906982}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radiusOfView: 4
-  angleOfView: 90
+  angleOfView: 135
   target: {fileID: 0}
   canSeeTarget: 0
   targetMask:
@@ -187,6 +188,18 @@ MonoBehaviour:
   obstructionMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &458906982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571448958502623680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8a11b8fbf749947beae98086ea48c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7571448958722061251
 GameObject:
   m_ObjectHideFlags: 0
